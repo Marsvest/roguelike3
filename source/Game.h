@@ -29,6 +29,7 @@ class Game {
 	shared_ptr<set<shared_ptr<Actor>>> actors;
 	set<shared_ptr<Actor>> moveDirection;
 	GAME_STAT s = GAME_STAT::UNDEF;
+	bool paused = false;
 public:
 	KnightFactory knightFactory;
 	PrincessFactory princessFactory;
@@ -79,57 +80,72 @@ public:
 
 			// Движение игрока
 			auto ch = getch();
-			if (ch != ERR && tMaxSpeedInterval.elapsedSeconds() > 0.05) {
+			if (ch == 'p') {
+				map->switchPaused();
+				map->Draw();
 
-				auto pos = mainPlayer->getPos();
-
-				if (ch == 'w' || ch == KEY_UP) {
-					map->Step(mainPlayer, Vec::UP);
+				if (paused) {
+					t.start();
+					paused = false;
 				}
-				else if (ch == 'd' || ch == KEY_RIGHT) {
-					map->Step(mainPlayer, Vec::RIGHT);
+				else {
+					t.stop();
+					paused = true;
 				}
-				else if (ch == 's' || ch == KEY_DOWN) {
-					map->Step(mainPlayer, Vec::DOWN);
+			}
+			if (!paused) {
+				if (ch != ERR && tMaxSpeedInterval.elapsedSeconds() > 0.05) {
+
+					auto pos = mainPlayer->getPos();
+
+					if (ch == 'w' || ch == KEY_UP) {
+						map->Step(mainPlayer, Vec::UP);
+					}
+					else if (ch == 'd' || ch == KEY_RIGHT) {
+						map->Step(mainPlayer, Vec::RIGHT);
+					}
+					else if (ch == 's' || ch == KEY_DOWN) {
+						map->Step(mainPlayer, Vec::DOWN);
+					}
+					else if (ch == 'a' || ch == KEY_LEFT) {
+						map->Step(mainPlayer, Vec::LEFT);
+					}
+					tMaxSpeedInterval.start();
+					lazyDraw = true;
 				}
-				else if (ch == 'a' || ch == KEY_LEFT) {
-					map->Step(mainPlayer, Vec::LEFT);
+
+				// Стрельба игрока
+				if (ch == ' ' && shotInterval.elapsedSeconds() > 0.4) {
+					Fire(static_pointer_cast<Character>(mainPlayer));
+					shotInterval.start();
+					lazyDraw = true;
 				}
-				tMaxSpeedInterval.start();
-				lazyDraw = true;
-			}
 
-			// Стрельба игрока
-			if (ch == ' ' && shotInterval.elapsedSeconds() > 0.4) {
-				Fire(static_pointer_cast<Character>(mainPlayer));
-				shotInterval.start();
-				lazyDraw = true;
-			}
+				// Стрельба мобов
+				if (tshot.elapsedSeconds() >= 0.2) {
+					moveProjectilies();
+					tshot.start();
+					lazyDraw = true;
+				}
 
-			// Стрельба мобов
-			if (tshot.elapsedSeconds() >= 0.2) {
-				moveProjectilies();
-				tshot.start();
-				lazyDraw = true;
-			}
+				// Движение мобов
+				if (t.elapsedSeconds() >= 1) {
+					MoveMobs();
+					t.start();
+					lazyDraw = true;
+				}
 
-			// Движение мобов
-			if (t.elapsedSeconds() >= 1) {
-				MoveMobs();
-				t.start();
-				lazyDraw = true;
-			}
+				// Восполнение маны
+				if (tMana.elapsedSeconds() >= 1.0) {
+					RestoreMana(1);
+					tMana.start();
+					lazyDraw = true;
+				}
 
-			// Восполнение маны
-			if (tMana.elapsedSeconds() >= 1.0) {
-				RestoreMana(1);
-				tMana.start();
-				lazyDraw = true;
-			}
-
-			if (lazyDraw) { 
-				winResize();
-				map->Draw(); 
+				if (lazyDraw) {
+					winResize();
+					map->Draw();
+				}
 			}
 		}
 	};

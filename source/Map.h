@@ -33,6 +33,7 @@ class Map {
 	AidKitFactory aidKitFactory;
 	DragonFactory dragonFactory;
 	BreakableWallFactory breakableWallFactory;
+	bool paused = false;
 
 
 public:
@@ -49,7 +50,7 @@ public:
 		}
 	};
 
-	// Рисовать туман войны вокруг игрока
+	// Отрисовка карты
 	void Draw() {
 		int my, mx;
 		getmaxyx(stdscr, my, mx);
@@ -98,7 +99,17 @@ public:
 		mvprintw(0, 0, " HP: %i / %i ", c->getHp(), c->getMaxHp());
 		mvprintw(1, 0, " MP: %i / %i ", c->getMana(), c->getMaxMana());
 
-		mvprintw(my-1, 0, " Fire: SPACE,  Move: WASD ");
+		mvprintw(my-1, 0, " Fire: SPACE,  Move: WASD,  Pause: P ");
+
+		if (paused) {
+			int maxY, maxX;
+			getmaxyx(stdscr, maxY, maxX);
+
+			int centerY = maxY / 2;
+			int centerX = maxX / 2;
+
+			mvprintw(centerY + 2, centerX - 1, " paused... press P to unpause ");
+		}
 
 		refresh();
 
@@ -106,6 +117,10 @@ public:
 
 	shared_ptr<Actor> GetMainPlayer() {
 		return mainPlayer;
+	}
+
+	void switchPaused() {
+		paused = !paused;
 	}
 
 	// Обработка движения
