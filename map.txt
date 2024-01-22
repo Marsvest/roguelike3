@@ -6,23 +6,23 @@
           OO                D                     OO          
         OO            Z                             OO        
       OO                               Z              OO      
-    OO          D                                       OO             OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-    OO                            D                     OO             OO                               OO
-  OO                        D           Z                 OO           OO                               OO
-  OO            D                                         OO           OO             Z           Z     OO
-  OO                                                      OO           OO        D                      OO
-OO                      Z           D                       OOOOOOOOOOOOO                               OO
-OO          Z      BBBBBB                                   OOOOOOOOOOOOO                 D        BBB  OO
-OO               BB   +  BB                 Z               BB Z       BB                          BPB  OO
-OO               BB ++ ++BB           D         +           BB    D    BB                          BBB  OO
-OO               BB      BB     Z                           BB         BB       D                       OO
-OO                 BBBBBB D                                 OOOOOOOOOOOOO                               OO
-OO     Z        D                        Z                  OOOOOOOOOOOOO             Z                 OO
-  OO                                                      OO           OO                               OO
-  OO                     Z                                OO           OO                        D      OO
-  OO                           Z                          OO           OO                               OO
-    OO              D                           Z       OO             OO       D                       OO
-    OO       BB                Z                       OO              OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    OO          D                                       OO             OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    OO                            D                     OO             OO                               OOOO                               OO
+  OO                        D           Z                 OO           OO                               BBBB                               OO
+  OO            D                                         OO           OO             Z           Z     OOOO    Z              D           OO
+  OO                                                      OO           OO        D                      OOOO                               OO
+OO                      Z           D                       OOOOOOOOOOOOO                               OOOO          Z                    OO
+OO          Z      BBBBBB                                   OOOOOOOOOOOOO                 D        BBB  BBBB                               OO
+OO               BB   +  BB                 Z               BB Z       BB                          B+B  OOOO                     BBB       OO
+OO               BB ++ ++BB           D         +           BB    D    BB                          BBB  OOOO          D          BPB       OO
+OO               BB      BB     Z                           BB  Z    Z BB       D                       OOOO                     BBB       OO
+OO                 BBBBBB D                                 OOOOOOOOOOOOO                               OOOO                               OO
+OO     Z        D                        Z                  OOOOOOOOOOOOO             Z                 OOOO                               OO
+  OO                                                      OO           OO                               OOOO        Z                      OO
+  OO                     Z                                OO           OO                        D      BBBB    D                          OO
+  OO                           Z                          OO           OO                               OOOO                   Z           OO
+    OO              D                           Z       OO             OO       D                       BBBB                               OO
+    OO       BB                Z                       OO              OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
       OO                                BB            OO      
         OO                  Z                       OO        
           OO       Z                              OO          
@@ -53,7 +53,7 @@ OO     Z        D                        Z                  OOOOOOOOOOOOO       
   OO                                                      OO  
   OO                                                      OO  
 OO                                                          OO
-OO                                                          OO
+OO                 D                                        OO
 OO                                                          OO
 OO                            K                             OO
 OO                                                          OO
@@ -70,4 +70,47 @@ OO           +                                              OO
             OO                                  OO            
               OOOO                          OOOO              
                   OOOOOO              OOOOOO                  
-                        OOOOOBBBBOOOOO  
+                        OOOOOBBBBOOOOO
+                        OOOOOBBBBOOOOO                        
+                        OOOOO   ZOOOOO
+                        OOOOO    OOOOO                        
+                        OOOOOZZ  OOOOO
+                        OOOOO    OOOOO
+                        OOOOO D  OOOOO
+                        OOOOO  D OOOOO
+                        OOOOO    OOOOO
+                        OOOOO Z  OOOOO
+                        OOOOOB  BOOOOO
+                        OOOOOB  BOOOOO
+                        OOOOOBBBBOOOOO      
+                        OOOOOBBBBOOOOO                                  
+                  OOOOOO              OOOOOO                  
+              OOOO                          OOOO              
+            OO                                  OO            
+          OO                D                     OO          
+        OO            Z                             OO        
+      OO                               Z              OO      
+    OO          D                                       OO             OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+    OO                            D                     OO             OO                               OO
+  OO                        D           Z                 OO           OO                               OO
+  OO            D                                         OO           OO             Z           Z     OO
+  OO                                                      OO           OO        D                      OO
+OO                      Z           D                       OOOOOOOOOOOOO                               OO
+OO          Z                                               OOOOOOOOOOOOO                 D        BBB  OO
+OO                                          Z               BB Z       BB                          B+B  OO
+OO                                    D         +           BB    D    BB                          BBB  OO
+OO                   Z                                      BB         BB       D                       OO
+OO                        D                                 OOOOOOOOOOOOO                               OO
+OO     Z        D                        Z                  OOOOOOOOOOOOO             Z                 OO
+  OO                                                      OO           OO                               OO
+  OO                     Z                                OO           OO                        D      OO
+  OO                           Z                          OO           OO                               OO
+    OO              D                           Z       OO             OO       D                       OO
+    OO       BB                Z                       OO              OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+      OO                                BB            OO      
+        OO                  Z                       OO        
+          OO       Z                              OO          
+            OO                                  OO            
+              OOOO            D             OOOO              
+                  OOOOOO              OOOOOO                  
+                        OOOOOOOOOOOOOO   
