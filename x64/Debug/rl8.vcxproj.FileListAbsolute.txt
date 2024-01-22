@@ -1,3 +1,0 @@
-C:\Users\mrart\source\repos\rl8\x64\Debug\rl8.vcxproj.CopyComplete
-C:\Users\mrart\source\repos\rl8\x64\Debug\rl8.exe
-C:\Users\mrart\source\repos\rl8\x64\Debug\pdcurses.dll
