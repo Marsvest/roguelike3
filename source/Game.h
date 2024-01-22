@@ -40,6 +40,7 @@ public:
 
 
 	Game() {
+		// Инициализация карты
 		c = make_shared<Config>();
 
 		auto fMap = FabricMap();
@@ -69,11 +70,14 @@ public:
 		delta.start();
 
 		mainPlayer = map->GetMainPlayer();
+
+		// Главный цикл игры
 		while (1) {
 			auto lazyDraw = false;
 			
 			if (Clean()) return s;
 
+			// Движение игрока
 			auto ch = getch();
 			if (ch != ERR && tMaxSpeedInterval.elapsedSeconds() > 0.05) {
 
@@ -94,23 +98,29 @@ public:
 				tMaxSpeedInterval.start();
 				lazyDraw = true;
 			}
+
+			// Стрельба игрока
 			if (ch == ' ' && shotInterval.elapsedSeconds() > 0.4) {
 				Fire(static_pointer_cast<Character>(mainPlayer));
 				shotInterval.start();
 				lazyDraw = true;
 			}
 
+			// Стрельба мобов
 			if (tshot.elapsedSeconds() >= 0.2) {
 				moveProjectilies();
 				tshot.start();
 				lazyDraw = true;
 			}
 
+			// Движение мобов
 			if (t.elapsedSeconds() >= 1) {
 				MoveMobs();
 				t.start();
 				lazyDraw = true;
 			}
+
+			// Восполнение маны
 			if (tMana.elapsedSeconds() >= 1.0) {
 				RestoreMana(1);
 				tMana.start();
@@ -121,13 +131,10 @@ public:
 				winResize();
 				map->Draw(); 
 			}
-			//auto sleepTime = 16 - delta.elapsedMilliseconds();
-			//if(sleepTime > 3) Sleep(sleepTime);
-
-			//delta.start();
 		}
 	};
 
+	// Очиистка при проигрыше
 	bool Clean() {
 		if (mainPlayer->isMarkForDelete()) {
 			s = GAME_STAT::DEFEAT;
@@ -154,6 +161,7 @@ public:
 		return false;
 	}
 
+	// Функция стрельбы
 	void Fire(shared_ptr<Character> a) {
 		auto pl = a->Fire();
 		if (pl && map->Add(pl)) {
@@ -161,6 +169,7 @@ public:
 		}
 	}
 
+	// Функция восполнения маны
 	void RestoreMana(int count) {
 		for (auto it = actors->begin(); it != actors->end(); it++) {
 			auto en = dynamic_pointer_cast<Character>(*it);
@@ -170,7 +179,8 @@ public:
 		}
 	}
 
-	void MoveMobs() { //AI
+	// Функция движения мобов
+	void MoveMobs() {
 		for (auto it = actors->begin(); it != actors->end(); it++) {
 			auto en = dynamic_pointer_cast<Enemy>(*it);
 			if (en) {
@@ -180,6 +190,7 @@ public:
 		}
 	}
 
+	// Функция движения снарядов
 	void moveProjectilies() {
 		for (auto it = moveDirection.begin(); it != moveDirection.end(); it++) {
 			if (static_pointer_cast<Projectile>(*it)->IsNext()) {
@@ -191,6 +202,7 @@ public:
 		}
 	};
 
+	// Расставление мобов на карте
 	std::pair<shared_ptr<set<shared_ptr<Actor>>>, shared_ptr<Knight>>  FabricMap() {
 		ifstream in("map.txt");
 		string str;

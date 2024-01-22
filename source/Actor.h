@@ -31,13 +31,15 @@ struct Vec {
 	}
 	~Vec() {}
 };
+
+// Направления движения
 const struct Vec Vec::UP = { 0 , -1 };
 const struct Vec Vec::RIGHT = { 1 , 0 };
 const struct Vec Vec::DOWN = { 0 , 1 };
 const struct Vec Vec::LEFT = { -1 , 0 };
 const struct Vec Vec::DIRS[] = { Vec::UP, Vec::RIGHT, Vec::DOWN, Vec::LEFT };
 
-
+// Класс персонажа
 class Actor {
 	Vec pos;
 	char sym;
@@ -68,6 +70,7 @@ public:
 	
 };
 
+// Класс главного героя
 class Character : public Actor {
 public:
 
@@ -95,6 +98,8 @@ public:
 	virtual shared_ptr<Projectile> Fire() { return nullptr; };
 };
 
+
+// Класс противника
 class Enemy : public Character {
 public:
 	Enemy(int hp, int damage, int maxHp, int mana, int maxMana, char sym, Vec pos) : Character(hp, damage, maxHp, mana, maxMana, sym, pos) {};
@@ -106,6 +111,7 @@ public:
 	}
 };
 
+// Класс аптечки
 class AidKit : public Actor {
 	int restoreHp;
 
@@ -126,6 +132,7 @@ public:
 	void Collide(BreakableWall* o) override {}
 };
 
+// Класс принцессы
 class Princess : public Character {
 public:
 	Princess(Vec pos, int hp, int damage, int maxHp, int mana, int maxMana, char sym) : Character(hp, damage, maxHp, mana, maxMana, sym, pos) {}
@@ -143,6 +150,7 @@ public:
 
 };
 
+// Класс зомби
 class Zombie : public Enemy {
 public:
 	Zombie(Vec pos, int hp, int damage, int maxHp, int mana, int maxMana, char sym) : Enemy(hp, damage, maxHp, mana, maxMana, sym, pos) {}
@@ -160,6 +168,7 @@ public:
 
 };
 
+// Класс дракона
 class Dragon : public Enemy {
 public:
 	Dragon(Vec pos, int hp, int damage, int maxHp, int mana, int maxMana, char sym) : Enemy(hp, damage, maxHp, mana, maxMana, sym, pos) {}
@@ -178,6 +187,7 @@ public:
 
 };
 
+// Класс разрушаемой стены
 class BreakableWall : public Character {
 public:
 	BreakableWall(Vec pos, int hp, char sym) : Character(hp, 1, hp, 0, 0, sym, pos) {}
@@ -198,6 +208,7 @@ public:
 
 };
 
+// Класс игрока
 class Knight : public Character {
 public:
 	Knight(Vec pos, int hp, int damage, int maxHp, int mana, int maxMana, char sym) : Character(hp, damage, maxHp, mana, maxMana, sym, pos) {}
@@ -241,7 +252,8 @@ public:
 
 };
 
-class Projectile : public Character { // пуля
+// Класс снаряда
+class Projectile : public Character {
 	int maxDist;
 	bool isEnemy;
 	int path = 0;
@@ -299,7 +311,7 @@ public:
 
 };
 
-
+// Класс стены
 class Wall : public Actor {
 public:
 	Wall(Vec pos, char sym) : Actor(sym, pos) {}

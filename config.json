@@ -49,7 +49,7 @@
     "LEFT": "<"
   },
   "FOG": {
-    "enable": true,
+    "enable": false,
     "distance": 15
   }
 }

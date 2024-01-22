@@ -17,19 +17,21 @@ class Config {
 public:
 	Config() { ifstream("config.json") >> j; }
 
+	// Импорт тумана из конфига
 	std::pair<int, bool> GetFog() {
 		ifstream("config.json") >> j;
 
 		return{ j["FOG"]["distance"].get<int>() ,j["FOG"]["enable"].get<bool>() };
 	}
 
-
+	// Импорт общий темплейт для импорта из конфига
 	template <typename T>
 	T Get(string className, string paramName){
 		
 		return j[className][paramName].get<T>();
 	}
 
+	// Импорт карты
 	json GetMapConf() {
 		ifstream("mapConfig.json") >> m;
 		return m;

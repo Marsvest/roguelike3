@@ -49,7 +49,8 @@ public:
 		}
 	};
 
-	void Draw() { //Рисовать вокруг игрока
+	// Рисовать туман войны вокруг игрока
+	void Draw() {
 		int my, mx;
 		getmaxyx(stdscr, my, mx);
 
@@ -90,6 +91,8 @@ public:
 
 			}
 		}
+
+		// Отрисовка UI
 		auto c = std::static_pointer_cast<Character>(mainPlayer);
 
 		mvprintw(0, 0, " HP: %i / %i ", c->getHp(), c->getMaxHp());
@@ -105,6 +108,7 @@ public:
 		return mainPlayer;
 	}
 
+	// Обработка движения
 	void Move(shared_ptr<Actor> from, Vec newPos) {
 		auto it = posBase.find({ newPos.x, newPos.y });
 		auto fromPos = from->getPos();
@@ -119,11 +123,14 @@ public:
 			it->second->Collide(from);
 		}
 	}
+
+	// Обработка шага движения (направление)
 	void Step(shared_ptr<Actor> from, Vec dir) {
 		from->SetLastDir(dir);
 		Move(from, from->getPos() + dir);
 	}
 	
+	// Добавление персонажа
 	bool Add(shared_ptr<Actor> a) {
 		auto pos = a->getPos();
 		auto it = posBase.find({ pos.x, pos.y });
@@ -136,14 +143,14 @@ public:
 		return it == posBase.end();
 	}
 
+	// Удаление персонажа
 	void Hide(shared_ptr<Actor> from) {
 		auto fromPos = from->getPos();
 		posBase.erase({ fromPos.x, fromPos.y });
 	}
 
+	// Генерация мира
 	void Gen(int x, int y) {
-
-
 		if (rand() % 100 < 2) {
 			if (rand() % 100 < 10) {
 				Add(zombieFactory.createActor(Vec(x, y)));

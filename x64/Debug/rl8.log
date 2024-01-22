@@ -1,8 +1,8 @@
 ﻿  roglike.cpp
-C:\Users\mrart\source\repos\rl8\source\Map.h(160,70): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\mrart\source\repos\rl8\source\Map.h(167,70): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "source/roglike.cpp")
   
-C:\Users\mrart\source\repos\rl8\source\Map.h(160,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\mrart\source\repos\rl8\source\Map.h(167,54): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "source/roglike.cpp")
   
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\um\wincontypes.h(103,1): warning C4005: MOUSE_MOVED: изменение макроопределения
@@ -17,5 +17,5 @@ C:\Users\mrart\source\repos\rl8\source\Timer.h(24,92): warning C4244:           
 C:\Users\mrart\source\repos\rl8\source\Timer.h(24,92): warning C4244:         ]
   (компиляция исходного файла "source/roglike.cpp")
   
-C:\Users\mrart\source\repos\rl8\source\Actor.h(260): warning C4715: Projectile::DirSym: значение возвращается не при всех путях выполнения
+C:\Users\mrart\source\repos\rl8\source\Actor.h(272): warning C4715: Projectile::DirSym: значение возвращается не при всех путях выполнения
   rl8.vcxproj -> C:\Users\mrart\source\repos\rl8\x64\Debug\rl8.exe
