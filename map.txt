@@ -53,7 +53,7 @@ OO     Z        D                        Z                  OOOOOOOOOOOOO       
   OO                                                      OO  
   OO                                                      OO  
 OO                                                          OO
-OO                 D                                        OO
+OO                 +                                        OO
 OO                                                          OO
 OO                            K                             OO
 OO                                                          OO

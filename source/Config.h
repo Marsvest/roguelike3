@@ -31,7 +31,7 @@ public:
 		return j[className][paramName].get<T>();
 	}
 
-	// Импорт карты
+	// Импорт конфига карты
 	json GetMapConf() {
 		ifstream("mapConfig.json") >> m;
 		return m;

@@ -1,7 +1,7 @@
 #pragma once
 #include "Map.h"
 #include <curses.h>
-#include "windows.h" // sleep resize
+#include "windows.h"
 #include "Config.h"
 #include "Timer.h"
 #include <cstdlib>
@@ -202,7 +202,7 @@ public:
 		}
 	};
 
-	// Расставление мобов на карте
+	// Парсинг карты и расставление мобов
 	std::pair<shared_ptr<set<shared_ptr<Actor>>>, shared_ptr<Knight>>  FabricMap() {
 		ifstream in("map.txt");
 		string str;
