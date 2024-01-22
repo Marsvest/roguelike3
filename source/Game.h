@@ -72,7 +72,7 @@ public:
 		mainPlayer = map->GetMainPlayer();
 
 		// Главный цикл игры
-		while (1) {
+		while (true) {
 			auto lazyDraw = false;
 			
 			if (Clean()) return s;
